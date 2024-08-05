@@ -1,26 +1,21 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './components/Home';
-import GoogleLogin from './components/GoogleLogin';
-import TwitterLogin from './components/TwitterLogin';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
+import Login from './Login';
+import User from './User';
 
 const App = () => {
-  return (
-    <Router>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/google-login">Login with Google</Link></li>
-          <li><Link to="/twitter-login">Login with Twitter</Link></li>
-        </ul>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/google-login" element={<GoogleLogin />} />
-        <Route path="/twitter-login" element={<TwitterLogin />} />
-      </Routes>
-    </Router>
-  );
+    return (
+        <AuthProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/user" element={<User />} />
+                </Routes>
+            </Router>
+        </AuthProvider>
+    );
 };
 
 export default App;
