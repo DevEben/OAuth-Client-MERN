@@ -1,9 +1,9 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './AuthContext';
-import Login from './Login';
-import User from './User';
+import { AuthProvider } from './components/AuthContext';
+import Login from './components/Login';
+import User from './components/User';
 
 const App = () => {
     return (
