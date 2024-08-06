@@ -1,14 +1,21 @@
 // Dashboard.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem('authToken');
-      
+
+      if (!token) {
+        navigate('/'); // Redirect to login if no token
+        return;
+      }
+
       try {
         const response = await axios.get('https://spiraltech-api.onrender.com/auth/user', {
           headers: {
@@ -16,24 +23,26 @@ function Dashboard() {
           },
         });
 
+        console.log('Fetched user data:', response.data.data);
+
         setUserData(response.data.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
         // Handle error or redirect to login if unauthorized
-        if (error.response.status === 401) {
+        if (error.response && error.response.status === 401) {
           localStorage.removeItem('authToken');
-          window.location.href = '/'; // Redirect to login
+          navigate('/'); // Redirect to login
         }
       }
     };
 
     fetchData();
-  }, []);
+  }, [navigate]);
 
   const handleLogout = () => {
     // Remove token and redirect to login
     localStorage.removeItem('authToken');
-    window.location.href = '/';
+    navigate('/');
   };
 
   return (

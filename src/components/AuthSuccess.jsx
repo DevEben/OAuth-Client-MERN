@@ -13,6 +13,8 @@ function AuthSuccess() {
       // Store the token in local storage
       localStorage.setItem('authToken', token);
 
+      console.log('Extracted token:', token);
+
       // Redirect to the dashboard
       navigate('/dashboard');
     } else {
