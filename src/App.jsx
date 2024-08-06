@@ -1,21 +1,18 @@
-// src/App.js
+// App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './components/AuthContext';
+import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
-import User from './components/User';
+import AuthSuccess from './components/AuthSuccess';
+import Dashboard from './components/Dashboard';
 
-const App = () => {
-    return (
-        <AuthProvider>
-            <Router>
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/user" element={<User />} />
-                </Routes>
-            </Router>
-        </AuthProvider>
-    );
-};
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/auth-success" element={<AuthSuccess />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+    </Routes>
+  );
+}
 
 export default App;
