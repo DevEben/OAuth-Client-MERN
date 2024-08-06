@@ -10,7 +10,7 @@ const useAuth = () => {
 
     const fetchUser = async () => {
       try {
-        const response = await axios.get('https://asianpacificexpress-api.onrender.com/auth/user', {
+        const response = await axios.get('https://spiraltech-api.onrender.com/auth/user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

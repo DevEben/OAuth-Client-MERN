@@ -4,7 +4,7 @@ import React from 'react';
 function Login() {
   const googleLogin = () => {
     // Redirect to the backend Google auth route
-    window.location.href = 'https://asianpacificexpress-api.onrender.com/auth/google';
+    window.location.href = 'https://spiraltech-api.onrender.com/auth/google';
   };
 
   return (
