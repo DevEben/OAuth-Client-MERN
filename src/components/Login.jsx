@@ -9,7 +9,7 @@ function Login() {
 
   const twitterLogin = () => {
     // Redirect to the backend Google auth route
-    window.location.href = 'https://spiraltech-api.onrender.com/auth/google';
+    window.location.href = 'https://spiraltech-api.onrender.com/auth/twitter';
   };
 
   return (
